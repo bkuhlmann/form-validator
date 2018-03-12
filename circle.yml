@@ -3,15 +3,32 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/ruby:2.5.0
+      - image: circleci/ruby:2.5-node
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
-          EDITOR: vim
-          RAILS_ENV: test
     steps:
       - checkout
+
+      - type: cache-restore
+        name: Sys Conf CPUs Restore
+        key: libsysconfcpus
+
+      - run:
+          name: Sys Conf CPUs Install
+          command: |
+            git clone https://github.com/obmarg/libsysconfcpus.git
+            cd libsysconfcpus
+            ./configure
+            make
+            sudo make install
+
+      - type: cache-save
+        name: Sys Conf CPUs Store
+        key: libsysconfcpus
+        paths:
+          - ~/libsysconfcpus
 
       - type: cache-restore
         name: Bundler Cache Restore
@@ -22,7 +39,6 @@ jobs:
           command: |
             gem update --system
             bundle check || bundle install
-            gem install rails
 
       - type: cache-save
         name: Bundler Cache Store
@@ -30,10 +46,31 @@ jobs:
         paths:
           - vendor/bundle
 
+      - type: cache-restore
+        name: Yarn Cache Restore
+        key: yarn-{{ checksum "yarn.lock" }}
+
       - run:
-          name: Rake Run
+          name: Yarn Install
+          command: |
+            yarn install --cache-folder ~/.cache/yarn
+            yarn add elm --dev
+
+      - type: cache-save
+        name: Yarn Cache Store
+        key: yarn-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/.cache/yarn
+
+      - run:
+          name: Code Quality Run
           command: bundle exec rake
 
       - run:
-          name: Code Climate Analyze
-          command: bundle exec codeclimate-test-reporter
+          name: Test Run
+          command: |
+            (
+              cd ~/project/tests
+              ../node_modules/.bin/elm-package install --yes
+            )
+            yarn ci

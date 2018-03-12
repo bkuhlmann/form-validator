@@ -1,0 +1,20 @@
+{
+  "name": "form-validator",
+  "version": "1.0.0",
+  "description": "A customizable form validation component.",
+  "main": "src/Form/Validator.elm",
+  "repository": "https://github.com/bkuhlmann/form-validator",
+  "author": "Brooke Kuhlmann <brooke@alchemists.io>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "elm-test": "^0.18.12"
+  },
+  "scripts": {
+    "build": "elm make src/FormValidator.elm --warn --output=tmp/form-validator.js",
+    "live": "elm live src/FormValidator.elm --warn --debug --output=tmp/form-validator.js",
+    "test": "elm-test --watch",
+    "doc": "elm-make --yes --docs=tmp/documentation.json --prepublish",
+    "ci": "sysconfcpus --num 1 elm-test"
+  },
+  "dependencies": {}
+}
