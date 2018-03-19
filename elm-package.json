@@ -7,7 +7,12 @@
         "src"
     ],
     "exposed-modules": [
-        "FormValidator"
+        "FormValidator",
+        "FormValidator.Models",
+        "FormValidator.Patterns",
+        "FormValidator.Validator",
+        "FormValidator.Validators",
+        "FormValidator.Views"
     ],
     "dependencies": {
         "elm-community/list-extra": "7.1.0 <= v < 8.0.0",
