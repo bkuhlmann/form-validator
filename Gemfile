@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "rake", "~> 12.3"
 gem "git-cop", "~> 2.1"
-gem "tocer", "7.0"
+gem "rake", "~> 12.3"
+gem "rubocop", "~> 0.53"
+gem "tocer", "~> 7.0"
