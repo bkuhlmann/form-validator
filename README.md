@@ -160,9 +160,8 @@ A basic model-view-update implementation might look like this:
 ### Field Keys
 
 The Form Validator design encourages one to use a union type for field keys so the compiler does
-most of the work for you should a field name be renamed, removed, etc. That said, you can use
-anything for a field key like an Integer, String, etc. but would recommend sticking with a union
-type if possible.
+most of the work for you should a field name be renamed, removed, etc. That said, you can use any
+type for the key but would recommend sticking with a union type if possible.
 
 In the above *Overview*, the following field key type was used:
 
@@ -211,8 +210,15 @@ form(s). Example:
     initialModel =
       {
         contactForm = [
-          Validator.init Name [Validator.isBlank, Validator.isLengthGreaterThanEqualTo 5],
-          Validator.init Email [Validator.isBlank, Validator.isEmail]
+          Validator.init Name [
+            Validator.isBlank,
+            Validator.isLengthGreaterThanEqualTo 5
+          ],
+
+          Validator.init Email [
+            Validator.isBlank,
+            Validator.isEmail
+          ]
         ],
         addressForm: [
           Validator.init Line2 []
@@ -275,7 +281,7 @@ When updating your form, this'll usually occur via one following functions:
 - *updateAndValidateValue:* Combines two steps into one, allowing you to update and validate a field
   at once.
 - *updateAndValidateValues:* Similar to the above but for multiple field values.
-- *validateForm:* Allows you to update and validate an entire form. Handy when preventing a from
+- *validateForm:* Allows you to update and validate an entire form. Handy when preventing a form
   being saved due to detected errors.
 
 ### Customization
