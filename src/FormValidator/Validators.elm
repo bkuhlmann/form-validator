@@ -14,6 +14,16 @@ module FormValidator.Validators exposing
     isEmail
   )
 
+{-|
+
+The Form Validator validators provide the functionality needed for validating a form field. These
+can be mixed and matched as desired.
+
+@docs isBlank, isEmpty, isInteger, isFloat, isIncluded, isExcluded, isGreaterThan, isLessThan
+@docs isBetween, isLengthGreaterThanEqualTo, isLengthLessThanEqualTo, isEmail
+
+-}
+
 import Regex
 import FormValidator.Models as Models
 import FormValidator.Patterns as Patterns

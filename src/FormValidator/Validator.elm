@@ -14,6 +14,15 @@ module FormValidator.Validator exposing
     isFieldInvalid
   )
 
+{-|
+
+The Form Validator validator which is main module used to manage forms and fields.
+
+@docs init, fieldValues, fieldValue, fieldErrors, updateValues, updateValue, updateAndValidateValues
+@docs updateAndValidateValue, validateForm, validateField, isFormInvalid, isFieldInvalid
+
+-}
+
 import List.Extra
 import FormValidator.Models as Models
 

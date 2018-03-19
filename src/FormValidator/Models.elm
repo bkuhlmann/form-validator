@@ -10,6 +10,14 @@ module FormValidator.Models exposing
     Error
   )
 
+{-|
+
+Form Validator component models.
+
+@docs Form, Field, Validators, Validator, Values, Value, Errors, Error
+
+-}
+
 {-| The form model which stores a list of fields for input and validation. -}
 type alias Form key =
   List (Field key)

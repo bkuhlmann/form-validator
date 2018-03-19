@@ -5,6 +5,15 @@ module FormValidator.Views exposing
     error
   )
 
+{-|
+
+The Form Validator views which are convenience methods for rendering fields within your form and
+page views.
+
+@docs field, errors, error
+
+-}
+
 import Html exposing (Html, div, text, li, ul)
 import Html.Attributes exposing (class, classList)
 import FormValidator.Models as Models

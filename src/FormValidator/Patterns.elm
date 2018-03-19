@@ -4,6 +4,14 @@ module FormValidator.Patterns exposing
     email
   )
 
+{-|
+
+Form Validator regular expression patterns.
+
+@docs blank, email
+
+-}
+
 import Regex
 
 {-| Answer regular expression for blank string. -}
