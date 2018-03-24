@@ -68,13 +68,13 @@ isIncluded includes value =
   if List.member value includes then
     Nothing
   else
-    Just <| "Invalid choice: " ++ value ++ ". Use: " ++ (String.join ", " includes) ++ "."
+    Just <| "Invalid value. Use: " ++ (String.join ", " includes) ++ "."
 
 {-| Check if value is excluded from list. -}
 isExcluded : List String -> Models.Value -> Models.Error
 isExcluded excludes value =
   if List.member value excludes then
-    Just <| "Invalid choice: " ++ value ++ ". Avoid: " ++ (String.join ", " excludes) ++ "."
+    Just <| "Invalid value. Avoid: " ++ (String.join ", " excludes) ++ "."
   else
     Nothing
 

@@ -51,7 +51,7 @@ all =
     describe "isIncluded" [
       test "answers error when excluded" <| \_ ->
         Validators.isIncluded ["red", "blue"] "bogus"
-          |> Expect.equal (Just "Invalid choice: bogus. Use: red, blue."),
+          |> Expect.equal (Just "Invalid value. Use: red, blue."),
 
       test "answers nothing when included" <| \_ ->
         Validators.isIncluded ["red", "blue"] "red"
@@ -61,7 +61,7 @@ all =
     describe "isExcluded" [
       test "answers error when included" <| \_ ->
         Validators.isExcluded ["red", "blue"] "red"
-          |> Expect.equal (Just "Invalid choice: red. Avoid: red, blue."),
+          |> Expect.equal (Just "Invalid value. Avoid: red, blue."),
 
       test "answers nothing when included" <| \_ ->
         Validators.isExcluded ["red", "blue"] "black"
