@@ -56,13 +56,16 @@ Provides a customizable form validation component for use within your views.
 
 ## Screenshots
 
-**Multiple Selection Error Example**
+The following demonstrates an example form (which will be styled differently for your
+implementation) before and after validation has occured.
 
-![](doc/screenshots/selection_error.png)
+**Blank Form**
 
-**Multiple Errors Example**
+![](doc/screenshots/demo-valid.png)
 
-![](doc/screenshots/multiple_errors.png)
+**Invalid Form**
+
+![](doc/screenshots/demo-invalid.png)
 
 ## Requirements
 
