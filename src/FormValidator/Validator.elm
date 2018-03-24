@@ -18,7 +18,7 @@ module FormValidator.Validator exposing
 
 {-|
 
-The Form Validator validator which is main module used to manage forms and fields.
+The Form Validator validator which is the main module used to update/validate forms and fields.
 
 @docs init, fieldValues, fieldValue, fieldErrors, updateValues, updateValue, updateAndValidateValues, resetForm, resetField
 @docs updateAndValidateValue, validateForm, validateField, isFormInvalid, isFieldInvalid
@@ -89,22 +89,22 @@ updateValue : key -> Models.Value -> Models.Form key -> Models.Form key
 updateValue key value form =
   List.Extra.updateIf (isField key) (updateFieldValue value) form
 
-{-| Answer multiple field values and validate each. -}
+{-| Update field values and validate them. -}
 updateAndValidateValues : key -> Models.Values -> Models.Form key -> Models.Form key
 updateAndValidateValues key values form =
   updateValues key values form |> validateField key
 
-{-| Answer single field value and validate it. -}
+{-| Update field value and validate it. -}
 updateAndValidateValue : key -> Models.Value -> Models.Form key -> Models.Form key
 updateAndValidateValue key value form =
   updateValue key value form |> validateField key
 
-{-| Answer form with all field values and errors reset to initial state. -}
+{-| Reset field values and errors for entire form to initial state. -}
 resetForm : Models.Form key -> Models.Form key
 resetForm form =
   List.map (updateFieldValueAndErrors "" []) form
 
-{-| Answer field with value and error reset to initial state. -}
+{-| Reset field value(s) and errors to initial state. -}
 resetField : key -> Models.Form key -> Models.Form key
 resetField key form =
   List.Extra.updateIf (isField key) (updateFieldValueAndErrors "" []) form

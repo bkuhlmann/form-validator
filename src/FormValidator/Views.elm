@@ -7,8 +7,8 @@ module FormValidator.Views exposing
 
 {-|
 
-The Form Validator views which are convenience methods for rendering fields within your form and
-page views.
+The Form Validator views which are convenience methods for rendering forms and fields within your
+views.
 
 @docs field, errors, error
 
@@ -21,7 +21,7 @@ import FormValidator.Validator as Validator
 
 -- VIEWS
 
-{-| View field with errors (if any). To be used as a wrapper to field input field(s). -}
+{-| View field with errors (if any). To be used as a wrapper around field DOM elements. -}
 field : key -> Models.Form key -> List String -> List (Html message) -> Html message
 field key form classes nodes =
   let
@@ -31,7 +31,7 @@ field key form classes nodes =
   in
     div [classList computedClasses] content
 
-{-| View field errors (if any) as a unordered list. -}
+{-| View field errors (if any) as an unordered list. -}
 errors : Models.Errors -> Html message
 errors errors =
   if List.isEmpty errors then

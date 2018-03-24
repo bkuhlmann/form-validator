@@ -12,7 +12,7 @@ module FormValidator.Models exposing
 
 {-|
 
-Form Validator component models.
+The Form Validator component models.
 
 @docs Form, Field, Validators, Validator, Values, Value, Errors, Error
 
@@ -34,26 +34,26 @@ type alias Field key =
     errors: Errors
   }
 
-{-| Convenience model for list of validators. -}
+{-| A list of validators for a field. -}
 type alias Validators =
   List Validator
 
-{-| Validates value as either an error string (invalid) or nothing at all (valid). -}
+{-| A field validator which evaluates to an error string (invalid) or nothing at all (valid). -}
 type alias Validator =
   (String -> Maybe String)
 
-{-| A list of values to be validated. -}
+{-| A list of field values to be validated. -}
 type alias Values =
   List Value
 
-{-| A value to be validated. -}
+{-| A field value to be validated. -}
 type alias Value =
   String
 
-{-| The error messages of invalid values. -}
+{-| The corresponding error messages of an invalid field value(s). -}
 type alias Errors =
   List Error
 
-{-| The error message of an invalid value. -}
+{-| The corresponding error message of an invalid field value. -}
 type alias Error =
   Maybe String

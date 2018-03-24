@@ -6,7 +6,7 @@ module FormValidator.Patterns exposing
 
 {-|
 
-Form Validator regular expression patterns.
+The Form Validator regular expression patterns.
 
 @docs blank, email
 
