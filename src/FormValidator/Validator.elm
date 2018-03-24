@@ -8,6 +8,8 @@ module FormValidator.Validator exposing
     updateValue,
     updateAndValidateValues,
     updateAndValidateValue,
+    resetForm,
+    resetField,
     validateForm,
     validateField,
     isFormInvalid,
@@ -18,7 +20,7 @@ module FormValidator.Validator exposing
 
 The Form Validator validator which is main module used to manage forms and fields.
 
-@docs init, fieldValues, fieldValue, fieldErrors, updateValues, updateValue, updateAndValidateValues
+@docs init, fieldValues, fieldValue, fieldErrors, updateValues, updateValue, updateAndValidateValues, resetForm, resetField
 @docs updateAndValidateValue, validateForm, validateField, isFormInvalid, isFieldInvalid
 
 -}
@@ -97,6 +99,16 @@ updateAndValidateValue : key -> Models.Value -> Models.Form key -> Models.Form k
 updateAndValidateValue key value form =
   updateValue key value form |> validateField key
 
+{-| Answer form with all field values and errors reset to initial state. -}
+resetForm : Models.Form key -> Models.Form key
+resetForm form =
+  List.map (updateFieldValueAndErrors "" []) form
+
+{-| Answer field with value and error reset to initial state. -}
+resetField : key -> Models.Form key -> Models.Form key
+resetField key form =
+  List.Extra.updateIf (isField key) (updateFieldValueAndErrors "" []) form
+
 -- VALIDATORS
 
 {-| Validate form (including all fields). -}
@@ -145,6 +157,10 @@ updateFieldValue value field =
 updateFieldErrors : Models.Field key -> Models.Field key
 updateFieldErrors field =
   {field | errors = buildErrors field}
+
+updateFieldValueAndErrors : Models.Value -> Models.Errors -> Models.Field key -> Models.Field key
+updateFieldValueAndErrors value errors field =
+  {field | value = value, errors = errors}
 
 buildErrors : Models.Field key -> Models.Errors
 buildErrors field =

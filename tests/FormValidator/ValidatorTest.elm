@@ -76,6 +76,49 @@ all =
           |> Expect.equal [Just "Must not be blank."]
     ],
 
+    describe "resetForm" [
+      test "answers form with field values reset" <| \_ ->
+        let
+          form = Validator.updateValue Email "test" testForm
+                   |> Validator.validateForm
+                   |> Validator.resetForm
+          result = String.join "" [
+                     Validator.fieldValue Name form,
+                     Validator.fieldValue Email form,
+                     Validator.fieldValue Preferences form
+                   ]
+        in
+          Expect.equal result "",
+
+      test "answers form with field errors reset" <| \_ ->
+        let
+          form = Validator.updateValue Email "test" testForm
+                   |> Validator.validateForm
+                   |> Validator.resetForm
+          result = List.concat [
+                     Validator.fieldErrors Name form,
+                     Validator.fieldErrors Email form,
+                     Validator.fieldErrors Preferences form
+                   ]
+        in
+          Expect.equal result []
+    ],
+
+    describe "resetField" [
+      test "answers field with value reset" <| \_ ->
+        Validator.updateValue Email "test" testForm
+          |> Validator.resetField Email
+          |> Validator.fieldValue Email
+          |> Expect.equal "",
+
+      test "answers field with errors reset" <| \_ ->
+        Validator.updateValue Email "test" testForm
+          |> Validator.validateForm
+          |> Validator.resetField Email
+          |> Validator.fieldErrors Email
+          |> Expect.equal []
+    ],
+
     describe "isFormInvalid" [
       test "answers valid form" <| \_ ->
         Validator.isFormInvalid testForm

@@ -18,7 +18,7 @@ A customizable form validation component.
 
 # Updaters
 
-@docs updateValues, updateValue, updateAndValidateValues, updateAndValidateValue
+@docs updateValues, updateValue, updateAndValidateValues, updateAndValidateValue, resetForm, resetField
 
 # Validators
 
@@ -87,6 +87,16 @@ updateAndValidateValues key values form =
 updateAndValidateValue : key -> Models.Value -> Models.Form key -> Models.Form key
 updateAndValidateValue key value form =
   Validator.updateAndValidateValue key value form
+
+{-| Validator module wrapper. See Validator module for details. -}
+resetForm : Models.Form key -> Models.Form key
+resetForm form =
+  Validator.resetForm form
+
+{-| Validator module wrapper. See Validator module for details. -}
+resetField : key -> Models.Form key -> Models.Form key
+resetField key form =
+  Validator.resetField key form
 
 -- VALIDATORS
 
