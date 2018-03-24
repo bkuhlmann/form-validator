@@ -23,13 +23,22 @@ all =
       test "answers true with email address" <| \_ ->
         Regex.contains Patterns.email "test@example.com"|> Expect.equal True,
 
+      test "answers true with sub-domain" <| \_ ->
+        Regex.contains Patterns.email "test@test.example.com"|> Expect.equal True,
+
+      test "answers true with numbers, dots, dashes, and underscores in user name" <| \_ ->
+        Regex.contains Patterns.email "t3st.un-known_sample@example.com"|> Expect.equal True,
+
       test "answers false with generic string" <| \_ ->
         Regex.contains Patterns.email "test"|> Expect.equal False,
 
-      test "answers false without user" <| \_ ->
+      test "answers false without user name" <| \_ ->
         Regex.contains Patterns.email "@example.com"|> Expect.equal False,
 
       test "answers false without domain" <| \_ ->
-        Regex.contains Patterns.email "test@"|> Expect.equal False
+        Regex.contains Patterns.email "test@"|> Expect.equal False,
+
+      test "answers false with multiple @'s" <| \_ ->
+        Regex.contains Patterns.email "test@tester@example.com"|> Expect.equal False
     ]
   ]

@@ -22,4 +22,5 @@ blank =
 {-| Answer regular expression for email address. -}
 email : Regex.Regex
 email =
-  Regex.regex "^.+@.+$" |> Regex.caseInsensitive
+  Regex.regex "^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+    |> Regex.caseInsensitive
