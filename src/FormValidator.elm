@@ -31,8 +31,8 @@ needed for your implementation. See the README for details.
 
 # Updaters
 
-@docs updateValues, updateValue, updateAndValidateValues, updateAndValidateValue, resetForm
-@docs resetField
+@docs updateValues, updateValuesAndValidate, updateValue, updateValueAndValidate
+@docs resetForm, resetField, updateAndValidateValues, updateAndValidateValue
 
 # Validators
 
@@ -91,19 +91,19 @@ updateValues key values form =
   Validator.updateValues key values form
 
 {-| `Validator` module wrapper function. See `Validator` module for details. -}
+updateValuesAndValidate : key -> Models.Values -> Models.Form key -> Models.Form key
+updateValuesAndValidate key values form =
+  Validator.updateValuesAndValidate key values form
+
+{-| `Validator` module wrapper function. See `Validator` module for details. -}
 updateValue : key -> Models.Value -> Models.Form key -> Models.Form key
 updateValue key value form =
   Validator.updateValue key value form
 
-{-| `Validator` module wrapper function. See `Validator` module for details. -}
-updateAndValidateValues : key -> Models.Values -> Models.Form key -> Models.Form key
-updateAndValidateValues key values form =
-  Validator.updateAndValidateValues key values form
-
-{-| `Validator` module wrapper function. See `Validator` module for details. -}
-updateAndValidateValue : key -> Models.Value -> Models.Form key -> Models.Form key
-updateAndValidateValue key value form =
-  Validator.updateAndValidateValue key value form
+{-| Update field value and validate it. -}
+updateValueAndValidate : key -> Models.Value -> Models.Form key -> Models.Form key
+updateValueAndValidate key value form =
+  Validator.updateValueAndValidate key value form
 
 {-| `Validator` module wrapper function. See `Validator` module for details. -}
 resetForm : Models.Form key -> Models.Form key
@@ -114,6 +114,24 @@ resetForm form =
 resetField : key -> Models.Form key -> Models.Form key
 resetField key form =
   Validator.resetField key form
+
+{-|
+**DEPRECATED: Will be removed in 2.0.0. Use `updateValuesAndValidate` instead.**
+
+Update field values and validate them.
+-}
+updateAndValidateValues : key -> Models.Values -> Models.Form key -> Models.Form key
+updateAndValidateValues key values form =
+  Validator.updateAndValidateValues key values form
+
+{-|
+**DEPRECATED: Will be removed in 2.0.0. Use `updateValueAndValidate` instead.**
+
+Update field value and validate it.
+-}
+updateAndValidateValue : key -> Models.Value -> Models.Form key -> Models.Form key
+updateAndValidateValue key value form =
+  Validator.updateAndValidateValue key value form
 
 -- VALIDATORS
 

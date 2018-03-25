@@ -5,11 +5,13 @@ module FormValidator.Validator exposing
     fieldValue,
     fieldErrors,
     updateValues,
+    updateValuesAndValidate,
     updateValue,
-    updateAndValidateValues,
-    updateAndValidateValue,
+    updateValueAndValidate,
     resetForm,
     resetField,
+    updateAndValidateValues,
+    updateAndValidateValue,
     validateForm,
     validateField,
     isFormInvalid,
@@ -20,7 +22,8 @@ module FormValidator.Validator exposing
 
 The Form Validator validator which is the main module used to update/validate forms and fields.
 
-@docs init, fieldValues, fieldValue, fieldErrors, updateValues, updateValue, updateAndValidateValues, resetForm, resetField
+@docs init, fieldValues, fieldValue, fieldErrors, updateValues, updateValuesAndValidate
+@docs updateValue, updateValueAndValidate, resetForm, resetField, updateAndValidateValues
 @docs updateAndValidateValue, validateForm, validateField, isFormInvalid, isFieldInvalid
 
 -}
@@ -84,19 +87,19 @@ updateValues key values form =
   in
     updateValue key (String.join valuesDelimiter filteredValues) form
 
+{-| Update field values and validate them. -}
+updateValuesAndValidate : key -> Models.Values -> Models.Form key -> Models.Form key
+updateValuesAndValidate key values form =
+  updateValues key values form |> validateField key
+
 {-| Update single field value without validation. -}
 updateValue : key -> Models.Value -> Models.Form key -> Models.Form key
 updateValue key value form =
   List.Extra.updateIf (isField key) (updateFieldValue value) form
 
-{-| Update field values and validate them. -}
-updateAndValidateValues : key -> Models.Values -> Models.Form key -> Models.Form key
-updateAndValidateValues key values form =
-  updateValues key values form |> validateField key
-
 {-| Update field value and validate it. -}
-updateAndValidateValue : key -> Models.Value -> Models.Form key -> Models.Form key
-updateAndValidateValue key value form =
+updateValueAndValidate : key -> Models.Value -> Models.Form key -> Models.Form key
+updateValueAndValidate key value form =
   updateValue key value form |> validateField key
 
 {-| Reset field values and errors for entire form to initial state. -}
@@ -108,6 +111,24 @@ resetForm form =
 resetField : key -> Models.Form key -> Models.Form key
 resetField key form =
   List.Extra.updateIf (isField key) (updateFieldValueAndErrors "" []) form
+
+{-|
+**DEPRECATED: Will be removed in 2.0.0. Use `updateValuesAndValidate` instead.**
+
+Update field values and validate them.
+-}
+updateAndValidateValues : key -> Models.Values -> Models.Form key -> Models.Form key
+updateAndValidateValues key values form =
+  updateValuesAndValidate key values form
+
+{-|
+**DEPRECATED: Will be removed in 2.0.0. Use `updateValueAndValidate` instead.**
+
+Update field value and validate it.
+-}
+updateAndValidateValue : key -> Models.Value -> Models.Form key -> Models.Form key
+updateAndValidateValue key value form =
+  updateValueAndValidate key value form
 
 -- VALIDATORS
 
