@@ -31,11 +31,15 @@ needed for your implementation. See the README for details.
 
 # Updaters
 
-@docs updateValues, updateValue, updateAndValidateValues, updateAndValidateValue, resetForm, resetField
+@docs updateValues, updateValue, updateAndValidateValues, updateAndValidateValue, resetForm
+@docs resetField
 
 # Validators
 
-@docs validateForm, validateField, isFormInvalid, isFieldInvalid, isBlank, isEmpty, isInteger, isFloat, isIncluded, isExcluded, isGreaterThan, isLessThan, isBetween, isLengthGreaterThanEqualTo, isLengthLessThanEqualTo, isEmail
+@docs validateForm, validateField, isFormInvalid, isFieldInvalid, isBlank, isEmpty, isInteger
+@docs isFloat, isIncluded, isExcluded, isGreaterThan, isGreaterThanEqualTo, isLessThan
+@docs isLessThanEqualTo, isBetween, isLengthGreaterThan, isLengthGreaterThanEqualTo
+@docs isLengthLessThan, isLengthLessThanEqualTo, isLengthBetween, isEmail
 
 # Views
 
@@ -169,9 +173,19 @@ isGreaterThan minimum value =
   Validators.isGreaterThan minimum value
 
 {-| `Validators` module wrapper function. See `Validators` module for details. -}
+isGreaterThanEqualTo : Int -> Models.Value -> Models.Error
+isGreaterThanEqualTo minimum value =
+  Validators.isGreaterThanEqualTo minimum value
+
+{-| `Validators` module wrapper function. See `Validators` module for details. -}
 isLessThan : Int -> Models.Value -> Models.Error
 isLessThan maximum value =
   Validators.isLessThan maximum value
+
+{-| `Validators` module wrapper function. See `Validators` module for details. -}
+isLessThanEqualTo : Int -> Models.Value -> Models.Error
+isLessThanEqualTo maximum value =
+  Validators.isLessThanEqualTo maximum value
 
 {-| `Validators` module wrapper function. See `Validators` module for details. -}
 isBetween : Int -> Int -> Models.Value -> Models.Error
@@ -179,14 +193,29 @@ isBetween minimum maximum value =
   Validators.isBetween minimum maximum value
 
 {-| `Validators` module wrapper function. See `Validators` module for details. -}
+isLengthGreaterThan : Int -> Models.Value -> Models.Error
+isLengthGreaterThan minimum value =
+  Validators.isLengthGreaterThan minimum value
+
+{-| `Validators` module wrapper function. See `Validators` module for details. -}
 isLengthGreaterThanEqualTo : Int -> Models.Value -> Models.Error
 isLengthGreaterThanEqualTo minimum value =
   Validators.isLengthGreaterThanEqualTo minimum value
 
 {-| `Validators` module wrapper function. See `Validators` module for details. -}
+isLengthLessThan : Int -> Models.Value -> Models.Error
+isLengthLessThan maximum value =
+  Validators.isLengthLessThan maximum value
+
+{-| `Validators` module wrapper function. See `Validators` module for details. -}
 isLengthLessThanEqualTo : Int -> Models.Value -> Models.Error
 isLengthLessThanEqualTo maximum value =
   Validators.isLengthLessThanEqualTo maximum value
+
+{-| `Validators` module wrapper function. See `Validators` module for details. -}
+isLengthBetween : Int -> Int -> Models.Value -> Models.Error
+isLengthBetween minimum maximum value =
+  Validators.isLengthBetween minimum maximum value
 
 {-| `Validators` module wrapper function. See `Validators` module for details. -}
 isEmail : Models.Value -> Models.Error

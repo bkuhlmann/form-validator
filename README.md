@@ -45,11 +45,16 @@ Provides a customizable form validation component for use within your views.
   - Float
   - Included
   - Excluded
-  - GreaterThan
   - LessThan
+  - LessThanEqualTo
+  - GreaterThan
+  - GreaterThanEqualTo
   - Between
-  - LengthGreaterThanEqualTo
+  - LengthLessThan
   - LengthLessThanEqualTo
+  - LengthGreaterThan
+  - LengthGreaterThanEqualTo
+  - LengthBetween
   - Email
 - Supports custom validators and UI styling.
 - Provides view helpers for rendering a form or field with or without errors.

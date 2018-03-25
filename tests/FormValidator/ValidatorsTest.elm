@@ -79,6 +79,18 @@ all =
         Validators.isGreaterThan 10 "15" |> Expect.equal Nothing
     ],
 
+    describe "isGreaterThanEqualTo" [
+      test "answers error when less than minimum" <| \_ ->
+        Validators.isGreaterThanEqualTo 10 "5"
+          |> Expect.equal (Just "Must be greater than or equal to 10."),
+
+      test "answers nothing when equal to minimum" <| \_ ->
+        Validators.isGreaterThanEqualTo 10 "10" |> Expect.equal Nothing,
+
+      test "answers nothing when greater than minimum" <| \_ ->
+        Validators.isGreaterThanEqualTo 10 "15" |> Expect.equal Nothing
+    ],
+
     describe "isLessThan" [
       test "answers error when greater than maximum" <| \_ ->
         Validators.isLessThan 10 "15" |> Expect.equal (Just "Must be less than 10."),
@@ -90,6 +102,18 @@ all =
         Validators.isLessThan 10 "5" |> Expect.equal Nothing
     ],
 
+    describe "isLessThanEqualTo" [
+      test "answers error when greater than maximum" <| \_ ->
+        Validators.isLessThanEqualTo 10 "15"
+          |> Expect.equal (Just "Must be less than or equal to 10."),
+
+      test "answers nothing when equal to maximum" <| \_ ->
+        Validators.isLessThanEqualTo 10 "10" |> Expect.equal Nothing,
+
+      test "answers nothing when less than maximum" <| \_ ->
+        Validators.isLessThanEqualTo 10 "5" |> Expect.equal Nothing
+    ],
+
     describe "isBetween" [
       test "answers error when less than minimum" <| \_ ->
         Validators.isBetween 1 10 "0" |> Expect.equal (Just "Must be between 1 and 10."),
@@ -99,6 +123,19 @@ all =
 
       test "answers nothing when beteen minimum and maximum" <| \_ ->
         Validators.isBetween 1 10 "5" |> Expect.equal Nothing
+    ],
+
+    describe "isLengthGreaterThan" [
+      test "answers error when less than minimum" <| \_ ->
+        Validators.isLengthGreaterThan 10 "Short."
+          |> Expect.equal (Just "Must be greater than 10 characters."),
+
+      test "answers error when equal to minimum" <| \_ ->
+        Validators.isLengthGreaterThan 10 "Test safe."
+          |> Expect.equal (Just "Must be greater than 10 characters."),
+
+      test "answers nothing when greater than minimum" <| \_ ->
+        Validators.isLengthGreaterThan 10 "This is quite safe." |> Expect.equal Nothing
     ],
 
     describe "isLengthGreaterThanEqualTo" [
@@ -113,6 +150,19 @@ all =
         Validators.isLengthGreaterThanEqualTo 10 "This is quite safe." |> Expect.equal Nothing
     ],
 
+    describe "isLengthLessThan" [
+      test "answers error when greater than maximum" <| \_ ->
+        Validators.isLengthLessThan 10 "This test is too long."
+          |> Expect.equal (Just "Must be less than 10 characters."),
+
+      test "answers error when equal to maximum" <| \_ ->
+        Validators.isLengthLessThan 10 "Test safe."
+          |> Expect.equal (Just "Must be less than 10 characters."),
+
+      test "answers nothing when less than maximum" <| \_ ->
+        Validators.isLengthLessThan 10 "Safe." |> Expect.equal Nothing
+    ],
+
     describe "isLengthLessThanEqualTo" [
       test "answers error when greater than maximum" <| \_ ->
         Validators.isLengthLessThanEqualTo 10 "This test is too long."
@@ -123,6 +173,19 @@ all =
 
       test "answers nothing when less than maximum" <| \_ ->
         Validators.isLengthLessThanEqualTo 10 "Safe." |> Expect.equal Nothing
+    ],
+
+    describe "isLengthBetween" [
+      test "answers error when less than minimum" <| \_ ->
+        Validators.isLengthBetween 5 10 "test"
+          |> Expect.equal (Just "Must be between 5 and 10 characters."),
+
+      test "answers error when greater than maximum" <| \_ ->
+        Validators.isLengthBetween 5 10 "Curabitur eleifend wisi iaculis ipsum."
+          |> Expect.equal (Just "Must be between 5 and 10 characters."),
+
+      test "answers nothing when between minimum and maximum" <| \_ ->
+        Validators.isLengthBetween 5 10 "A test." |> Expect.equal Nothing
     ],
 
     describe "isEmail" [
