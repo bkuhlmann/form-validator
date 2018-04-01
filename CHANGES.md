@@ -1,4 +1,4 @@
-# v1.2.0 (2018-03-25)
+# 1.2.0 (2018-03-25)
 
 - Fixed include/exclude validation list error output.
 - Added additional less/greater than/equal to validators.
@@ -8,13 +8,13 @@
 - Updated module documentation.
 - Refactored update value(s) and validate functions.
 
-# v1.1.0 (2018-03-19)
+# 1.1.0 (2018-03-19)
 
 - Fixed Elm package exposed module listings.
 - Fixed README typos.
 - Added Rubocop support.
 - Added added sub-module top-level documentation.
 
-# v1.0.0 (2018-03-18)
+# 1.0.0 (2018-03-18)
 
 - Initial version.
