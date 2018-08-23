@@ -33,18 +33,18 @@ field key form classes nodes =
 
 {-| View field errors (if any) as an unordered list. -}
 errors : Models.Errors -> Html message
-errors errors =
-  if List.isEmpty errors then
+errors messages =
+  if List.isEmpty messages then
     text ""
   else
-    ul [class "form_validator-errors"] (List.map error errors)
+    ul [class "form_validator-errors"] (List.map error messages)
 
 {-| View field error (if any) as a list item. -}
 error : Models.Error -> Html message
-error error =
-  case error of
-    Just error ->
-      li [class "form_validator-error"] [text error]
+error message =
+  case message of
+    Just errorMessage ->
+      li [class "form_validator-error"] [text errorMessage]
 
     Nothing ->
       text ""

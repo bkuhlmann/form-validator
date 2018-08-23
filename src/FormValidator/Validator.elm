@@ -165,7 +165,7 @@ isField key field =
 isError : Models.Error -> Bool
 isError error =
   case error of
-    Just error ->
+    Just _ ->
       True
 
     Nothing ->
