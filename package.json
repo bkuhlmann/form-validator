@@ -7,11 +7,11 @@
   "author": "Brooke Kuhlmann <brooke@alchemists.io>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "elm-test": "^0.18.12"
+    "elm-test": "0.19.0-rev6"
   },
   "scripts": {
-    "build": "elm make src/FormValidator.elm --warn --output=tmp/form-validator.js",
-    "live": "elm live src/FormValidator.elm --warn --debug --output=tmp/form-validator.js",
+    "build": "elm make src/FormValidator.elm --optimize --output=tmp/form-validator.js",
+    "live": "elm live src/FormValidator.elm --optimize --debug --output=tmp/form-validator.js",
     "test": "elm-test --watch",
     "doc": "elm-make --yes --docs=tmp/documentation.json --prepublish",
     "ci": "sysconfcpus --num 1 elm-test"
