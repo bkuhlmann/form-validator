@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="form-validator.png" alt="Form Validator Icon"/>
+</p>
+
 # Form Validator
 
 [![Circle CI Status](https://circleci.com/gh/bkuhlmann/form-validator.svg?style=svg)](https://circleci.com/gh/bkuhlmann/form-validator)
