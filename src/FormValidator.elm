@@ -1,4 +1,43 @@
-module FormValidator exposing (..)
+module FormValidator exposing
+  (
+    Form,
+    init,
+    fieldValues,
+    fieldValue,
+    fieldErrors,
+    updateValues,
+    updateValuesAndValidate,
+    updateValue,
+    updateValueAndValidate,
+    resetForm,
+    resetField,
+    updateAndValidateValues,
+    updateAndValidateValue,
+    validateForm,
+    validateField,
+    isFormInvalid,
+    isFieldInvalid,
+    isBlank,
+    isEmpty,
+    isInteger,
+    isFloat,
+    isIncluded,
+    isExcluded,
+    isGreaterThan,
+    isGreaterThanEqualTo,
+    isLessThan,
+    isLessThanEqualTo,
+    isBetween,
+    isLengthGreaterThan,
+    isLengthGreaterThanEqualTo,
+    isLengthLessThan,
+    isLengthLessThanEqualTo,
+    isLengthBetween,
+    isEmail,
+    viewField,
+    viewErrors,
+    viewError
+  )
 
 {-|
 
