@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/ruby:node
+      - image: circleci/ruby:latest-node
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -97,8 +97,4 @@ jobs:
       - run:
           name: Test Run
           command: |
-            (
-              cd ~/project/tests
-              ../node_modules/.bin/elm-package install --yes
-            )
             yarn ci
