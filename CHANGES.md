@@ -1,4 +1,4 @@
-# 1.3.0 (2019-06-01)
+# 1.3.0 (2019-06-03)
 
 - Fixed Circle CI cache for Ruby version.
 - Fixed Markdown ordered list numbering.
