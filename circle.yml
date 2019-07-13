@@ -76,7 +76,7 @@ jobs:
 
       - type: cache-restore
         name: Yarn Cache Restore
-        key: yarn-{{ checksum "yarn.lock" }}
+        key: yarn-{{ checksum "package.json" }}
 
       - run:
           name: Yarn Install
@@ -86,7 +86,7 @@ jobs:
 
       - type: cache-save
         name: Yarn Cache Store
-        key: yarn-{{ checksum "yarn.lock" }}
+        key: yarn-{{ checksum "package.json" }}
         paths:
           - ~/.cache/yarn
 
