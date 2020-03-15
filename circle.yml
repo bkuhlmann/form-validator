@@ -91,10 +91,10 @@ jobs:
           - ~/.cache/yarn
 
       - run:
-          name: Code Quality Run
+          name: Code Quality Check
           command: bundle exec rake
 
       - run:
-          name: Test Run
+          name: Build
           command: |
             yarn ci
