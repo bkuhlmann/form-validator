@@ -7,7 +7,7 @@
   "author": "Brooke Kuhlmann <brooke@alchemists.io>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "elm-test": "0.19.0-rev6"
+    "elm-test": "0.19.1-revision2"
   },
   "scripts": {
     "build": "elm make src/FormValidator.elm --optimize --output=tmp/form-validator.js",
