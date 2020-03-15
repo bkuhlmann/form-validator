@@ -16,6 +16,8 @@ Provides a customizable form validation component for use within your views.
   - [Screenshots](#screenshots)
   - [Requirements](#requirements)
   - [Setup](#setup)
+    - [Production](#production)
+    - [Development](#development)
   - [Usage](#usage)
     - [Overview](#overview)
     - [Field Keys](#field-keys)
@@ -82,13 +84,22 @@ implementation) before and after validation has occured.
 
 ## Setup
 
-To setup and install, run:
+### Production
+
+To install, run:
 
     elm package install bkuhlmann/form-validator
 
 You can import `FormValidator` as follows:
 
     import FormValidator as Validator
+
+### Development
+
+To contribute, run:
+
+    git clone https://github.com/bkuhlmann/form-validator.git
+    cd form-validator
 
 ## Usage
 
