@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="form-validator.png" alt="Form Validator Icon"/>
+  <img src="https://www.alchemists.io/images/projects/form-validator/icon.png" alt="Form Validator Icon"/>
 </p>
 
 # Form Validator
@@ -72,11 +72,11 @@ implementation) before and after validation has occured.
 
 **Blank Form**
 
-![](doc/screenshots/demo-valid.png)
+![](https://www.alchemists.io/images/projects/form-validator/screenshots/demo-valid.png)
 
 **Invalid Form**
 
-![](doc/screenshots/demo-invalid.png)
+![](https://www.alchemists.io/images/projects/form-validator/screenshots/demo-invalid.png)
 
 ## Requirements
 
