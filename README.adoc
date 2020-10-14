@@ -59,8 +59,6 @@ image::https://www.alchemists.io/images/projects/form-validator/screenshots/demo
 
 == Setup
 
-=== Production
-
 To install, run:
 
 [source,bash]
@@ -73,16 +71,6 @@ You can import `FormValidator` as follows:
 [source,elm]
 ----
 import FormValidator as Validator
-----
-
-=== Development
-
-To contribute, run:
-
-[source,bash]
-----
-git clone https://github.com/bkuhlmann/form-validator.git
-cd form-validator
 ----
 
 == Usage
@@ -339,6 +327,16 @@ needs. Here is a breakdown of the other modules available to you:
 
 By being able to import any module, you can better mix and match functionality for your specific
 needs without having to compile code you don't need.
+
+== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone https://github.com/bkuhlmann/form-validator.git
+cd form-validator
+----
 
 == Tests
 
