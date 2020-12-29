@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require "git/lint/rake/setup"
+# require "git/lint/rake/setup"
 
-task default: %i[git_lint]
+# task default: :git_lint
