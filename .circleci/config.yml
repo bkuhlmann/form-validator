@@ -1,0 +1,74 @@
+version: 2.1
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: circleci/ruby:latest-node
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Sys Conf CPUs Restore
+          keys:
+            - cpu-cache-{{.Branch}}
+            - cpu-cache-
+
+      - run:
+          name: Sys Conf CPUs Install
+          command: |
+            git clone https://github.com/obmarg/libsysconfcpus.git
+            cd libsysconfcpus
+            ./configure
+            make
+            sudo make install
+
+      - save_cache:
+          name: Sys Conf CPUs Store
+          key: cpu-cache
+          paths:
+            - ~/libsysconfcpus
+
+      - restore_cache:
+          name: Bundler Restore
+          keys:
+            - gem-cache-{{.Branch}}-{{checksum "Gemfile"}}
+            - gem-cache-
+
+      - run:
+          name: Bundler Install
+          command: |
+            gem update --system
+            bundle config set path "vendor/bundle"
+            bundle install
+
+      - save_cache:
+          name: Bundler Store
+          key: gem-cache-{{.Branch}}-{{checksum "Gemfile"}}
+          paths:
+            - vendor/bundle
+
+      - restore_cache:
+          name: Yarn Restore
+          keys:
+            - yarn-cache-{{.Branch}}-{{checksum "package.json"}}
+            - yarn-cache-
+
+      - run:
+          name: Yarn Install
+          command: |
+            yarn install --cache-folder ~/.cache/yarn
+            yarn add elm --dev
+
+      - save_cache:
+          name: Yarn Store
+          key: yarn-cache-{{.Branch}}-{{checksum "package.json"}}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Code Quality Check
+          command: bundle exec rake
+
+      - run:
+          name: Build
+          command: yarn ci
